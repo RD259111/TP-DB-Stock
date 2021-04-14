@@ -1,0 +1,57 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"> 
+
+<h:head>
+	<link rel="stylesheet" type="text/css" href="style/style.css"></link>
+</h:head>
+<body> 
+	<p:layout fullPage="true">
+	
+		<ui:include src="layoutUnitMenu.xhtml" />
+			
+		<p:layoutUnit position="center" id="layoutUnit-center">
+			<h1>Modifier le produit</h1>
+			<h:form>
+		
+				<p:growl></p:growl>
+		
+				<h:panelGrid columns="2">
+		
+					<h:outputText value="id produit" />
+					<h:outputText value="#{produitMBean.selectedProduit.idproduit}"></h:outputText>
+		
+					<h:outputText value="categorie" />
+					<p:inputText value="#{produitMBean.selectedProduit.categorie.libellecateg}"></p:inputText>
+					
+					
+					<h:outputText value="design produit" />
+					<p:inputText value="#{produitMBean.selectedProduit.designproduit}"></p:inputText>
+					
+					<h:outputText value="prix unitaire produit" />
+					<p:inputText value="#{produitMBean.selectedProduit.puproduit}"></p:inputText>
+					
+					<h:outputText value="quantité produit" />
+					<p:inputText value="#{produitMBean.selectedProduit.qteproduit}"></p:inputText>
+					
+					<h:outputText value="config produit" />
+					<p:inputText value="#{produitMBean.selectedProduit.configproduit}"></p:inputText>
+					
+					<h:outputText value="marque produit" />
+					<p:inputText value="#{produitMBean.selectedProduit.marqueproduit}"></p:inputText>
+					
+					<h:outputText value="model produit" />
+					<p:inputText value="#{produitMBean.selectedProduit.modelproduit}"></p:inputText>
+		
+					<h:commandButton actionListener="#{produitMBean.updateProduit}"
+						value="Modifier"></h:commandButton>
+		
+				</h:panelGrid>
+			</h:form>
+		</p:layoutUnit>
+	</p:layout>
+</body> 
+</html>

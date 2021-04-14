@@ -1,0 +1,65 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"> 
+
+<h:head>
+	<link rel="stylesheet" type="text/css" href="style/style.css"></link>
+</h:head>
+<body> 
+	<p:layout fullPage="true">
+	
+		<ui:include src="layoutUnitMenu.xhtml" />
+
+		<p:layoutUnit position="center" id="layoutUnit-center">
+			<h1>Liste des produits</h1>
+			<h:form>
+				<p:growl showDetail="true"></p:growl>
+				<p:dataTable value="#{produitMBean.listProduits}" var="produit" selection="#{produitMBean.selectedProduit}" selectionMode="single" rowKey="#{produit.idproduit}">
+					<p:column headerText="Id">
+						<h:outputText value="#{produit.idproduit}" />
+					</p:column>
+					
+					<p:column headerText="categorie">
+						<h:outputText value="#{produit.categorie.idcateg}" />
+					</p:column>
+					
+					<p:column headerText="design produit">
+						<h:outputText value="#{produit.designproduit}" />
+					</p:column>
+					
+					<p:column headerText="prix unitaire">
+						<h:outputText value="#{produit.puproduit}" />
+					</p:column>
+					
+					<p:column headerText="quantité">
+						<h:outputText value="#{produit.qteproduit}" />
+					</p:column>
+					
+					<p:column headerText="config">
+						<h:outputText value="#{produit.configproduit}" />
+					</p:column>
+					
+					<p:column headerText="marque">
+						<h:outputText value="#{produit.marqueproduit}" />
+					</p:column>
+					
+					<p:column headerText="model">
+						<h:outputText value="#{produit.modelproduit}" />
+					</p:column>
+					
+					<p:column headerText="Supprimer">
+						<h:commandButton actionListener="#{produitMBean.deleteProduit}" value="Supprimer" />
+					</p:column>
+					
+					<p:column headerText="Editer">
+						<h:commandButton action="#{produitMBean.editProduit}" value="Editer" />
+					</p:column>
+				</p:dataTable>
+			</h:form>
+		</p:layoutUnit>
+	</p:layout>
+</body> 
+</html>

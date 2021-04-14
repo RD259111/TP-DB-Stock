@@ -1,0 +1,91 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+	<link rel="stylesheet" type="text/css" href="style/style.css"></link>
+</h:head>
+<h:body>
+
+	<p:layout fullPage="true">
+	
+		<ui:include src="layoutUnitMenu.xhtml" />
+
+		<p:layoutUnit position="center" id="layoutUnit-center">
+			<h1>Liste des clients</h1>
+			<h:form>
+			 <p:growl showDetail="true"></p:growl>
+				<p:dataTable value="#{clientMBean.listClients}" var="client"
+					selection="#{clientMBean.selectedClient}" selectionMode="single"
+					rowKey="#{client.idclient}">
+
+					<p:column headerText="Id">
+						<h:outputText value="#{client.idclient}" />
+					</p:column>
+					<p:column headerText="Civilité">
+						<h:outputText value="#{client.civiliteclient}" />
+					</p:column>
+					<p:column headerText="Nom">
+						<h:outputText value="#{client.nomclient}" />
+					</p:column>
+					<p:column headerText="Prenom">
+						<h:outputText value="#{client.prenomclient}" />
+					</p:column>
+					<p:column headerText="login">
+						<h:outputText value="#{client.loginclient}" />
+					</p:column>
+					<p:column headerText="Mdp">
+						<h:outputText value="#{client.motpasseclient}" />
+					</p:column>
+					<p:column headerText="Date de naissance">
+						<h:outputText value="#{client.datenaissanceclient}" />
+					</p:column>
+					<p:column headerText="N° rue">
+						<h:outputText value="#{client.numeroadrclient}" />
+					</p:column>
+					<p:column headerText="nom rue">
+						<h:outputText value="#{client.rueadrclient}" />
+					</p:column>
+					<p:column headerText="Commune">
+						<h:outputText value="#{client.communeadrclient}" />
+					</p:column>
+					<p:column headerText="Ville">
+						<h:outputText value="#{client.villeadrclient}" />
+					</p:column>
+					<p:column headerText="Code Postal">
+						<h:outputText value="#{client.cpadrclient}" />
+					</p:column>
+					<p:column headerText="telephone">
+						<h:outputText value="#{client.telclient}" />
+					</p:column>
+					<p:column headerText="Fax">
+						<h:outputText value="#{client.faxclient}" />
+					</p:column>
+					<p:column headerText="Gsm">
+						<h:outputText value="#{client.gsmclient}" />
+					</p:column>
+					<p:column headerText="email">
+						<h:outputText value="#{client.emailclient}" />
+					</p:column>
+					
+					
+					<p:column headerText="Supprimer">
+						<h:commandButton actionListener="#{clientMBean.deleteClient}"
+							value="Suppr" />
+					</p:column>
+					<p:column headerText="Editer">
+						<h:commandButton action="#{clientMBean.editClient}"
+							value="Edit" />
+					</p:column>
+				</p:dataTable>
+			</h:form>
+		</p:layoutUnit>
+	</p:layout>
+
+
+</h:body>
+
+</html>

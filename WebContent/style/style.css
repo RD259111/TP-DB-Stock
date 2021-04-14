@@ -1,0 +1,34 @@
+@charset "UTF-8";
+
+#menu ul li {
+	display: inline;
+	padding-left: 3%;
+}
+
+ul {
+	text-align: center;
+}
+
+h1 {
+	font-size: 20px;
+	text-align: center;
+}
+
+.item-border {
+	border-right: 1px solid black;
+	padding-right: 3%;
+}
+
+#layoutUnit-center {
+	width: 200;
+	border-width: 0px;
+}
+
+#layoutUnit-west {
+	width: 200;
+	border-width: 1px;
+}
+
+#copyright {
+	float: right;
+}

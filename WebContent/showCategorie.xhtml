@@ -1,0 +1,52 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+	<link rel="stylesheet" type="text/css" href="style/style.css"></link>
+</h:head>
+<h:body>
+
+	<p:layout fullPage="true">
+	
+		<ui:include src="layoutUnitMenu.xhtml" />
+		
+		<p:layoutUnit position="center" id="layoutUnit-center">
+			<h1>Liste des catégories</h1>
+			<h:form>
+			 <p:growl showDetail="true"></p:growl>
+				<p:dataTable value="#{categorieMBean.listCategories}" var="categorie"
+					selection="#{categorieMBean.selectedCategorie}" selectionMode="single"
+					rowKey="#{categorie.idcateg}">
+
+					<p:column headerText="Id Categorie">
+						<h:outputText value="#{categorie.idcateg}" />
+					</p:column>
+					<p:column headerText="Code">
+						<h:outputText value="#{categorie.codecateg}" />
+					</p:column>
+					<p:column headerText="Libellé">
+						<h:outputText value="#{categorie.libellecateg}" />
+					</p:column>
+					
+					
+					<p:column headerText="Supprimer">
+						<h:commandButton actionListener="#{categorieMBean.deleteCategorie}"
+							value="Suppr" />
+					</p:column>
+					<p:column headerText="Editer">
+						<h:commandButton action="#{categorieMBean.editCategorie}"
+							value="Edit" />
+					</p:column>
+				</p:dataTable>
+			</h:form>
+		</p:layoutUnit>
+	</p:layout>
+
+
+</h:body>
+
+</html>

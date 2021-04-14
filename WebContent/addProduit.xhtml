@@ -1,0 +1,58 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"> 
+
+<h:head>
+	<link rel="stylesheet" type="text/css" href="style/style.css"></link>
+</h:head>
+<body> 
+
+	<p:layout fullPage="true">
+	
+		<ui:include src="layoutUnitMenu.xhtml" />
+
+		<p:layoutUnit position="center" id="layoutUnit-center">
+			<h1>Ajouter un produit</h1>
+			<h:form>
+				<p:growl></p:growl>
+		
+				<h:panelGrid columns="2">
+		
+					<h:outputText value="id produit" />
+					<p:inputText value="#{produitMBean.produit.idproduit}"></p:inputText>
+		
+					<h:outputText value="categorie" />
+					<p:selectOneMenu value="#{produitMBean.produit.categorie.idcateg}">
+						<f:selectItems value="#{categorieMBean.listCategories}" var="categorie" itemLabel="#{categorie.libellecateg}" itemValue="#{categorie.idcateg}" ></f:selectItems>
+					</p:selectOneMenu>
+					
+					<h:outputText value="design produit" />
+					<p:inputText value="#{produitMBean.produit.designproduit}"></p:inputText>
+					
+					<h:outputText value="prix unitaire produit" />
+					<p:inputText value="#{produitMBean.produit.puproduit}"></p:inputText>
+					
+					<h:outputText value="quantité produit" />
+					<p:inputText value="#{produitMBean.produit.qteproduit}"></p:inputText>
+					
+					<h:outputText value="config produit" />
+					<p:inputText value="#{produitMBean.produit.configproduit}"></p:inputText>
+					
+					<h:outputText value="marque produit" />
+					<p:inputText value="#{produitMBean.produit.marqueproduit}"></p:inputText>
+					
+					<h:outputText value="model produit" />
+					<p:inputText value="#{produitMBean.produit.modelproduit}"></p:inputText>
+		
+					<h:commandButton actionListener="#{produitMBean.addProduit}"
+						value="Ajouter"></h:commandButton>
+		
+				</h:panelGrid>
+			</h:form>
+		</p:layoutUnit>
+	</p:layout>
+</body> 
+</html>

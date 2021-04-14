@@ -1,0 +1,50 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+	<link rel="stylesheet" type="text/css" href="style/style.css"></link>
+</h:head>
+<h:body>
+
+	<p:layout fullPage="true">
+	
+		<ui:include src="layoutUnitMenu.xhtml" />
+
+		<p:layoutUnit position="center" id="layoutUnit-center">
+			<h1>Modifier la commande</h1>
+			<h:form>
+				<p:panel>
+				<p:growl></p:growl>
+
+				<h:panelGrid columns="2">
+
+					<h:outputText value="Id client" />
+					<h:outputText value="#{commandeMBean.selectedCommande.id.idclient}" required="true"></h:outputText>
+					
+					<h:outputText value="Id produit" />
+					<h:outputText value="#{commandeMBean.selectedCommande.id.idproduit}" required="true"></h:outputText>
+					
+					<h:outputText value="quantité" />
+					<p:inputText value="#{commandeMBean.selectedCommande.qtecommande}"></p:inputText>
+					
+					<h:outputText value="date" />
+					<p:calendar value="#{commandeMBean.selectedCommande.datecommande}"></p:calendar>
+					
+					<h:outputText value="etat" />
+					<p:inputText value="#{commandeMBean.selectedCommande.etatcommande}"></p:inputText>
+					
+					<h:commandButton actionListener="#{commandeMBean.updateCommande}"
+						value="Modifier"></h:commandButton>
+
+				</h:panelGrid>
+
+			</p:panel>
+			</h:form>
+		</p:layoutUnit>
+	</p:layout>
+</h:body>
+</html>

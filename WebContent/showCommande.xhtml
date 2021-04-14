@@ -1,0 +1,61 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+	<link rel="stylesheet" type="text/css" href="style/style.css"></link>
+</h:head>
+<h:body>
+
+	<p:layout fullPage="true">
+	
+		<ui:include src="layoutUnitMenu.xhtml" />
+
+		<p:layoutUnit position="center" id="layoutUnit-center">
+			<h1>Liste des commandes</h1>
+			<h:form>
+			 <p:growl showDetail="true"></p:growl>
+				<p:dataTable value="#{commandeMBean.listCommandes}" var="commande"
+					selection="#{commandeMBean.selectedCommande}" selectionMode="single"
+					rowKey="#{commande.id}">
+
+					<p:column headerText="Id client">
+						<h:outputText value="#{commande.client.idclient}" />
+					</p:column>
+					
+					<p:column headerText="Id produit">
+						<h:outputText value="#{commande.produit.idproduit}" />
+					</p:column>
+					
+					<p:column headerText="quantité">
+						<h:outputText value="#{commande.qtecommande}" />
+					</p:column>
+					
+					<p:column headerText="Date">
+						<h:outputText value="#{commande.datecommande}" />
+					</p:column>
+					
+					<p:column headerText="Etat">
+						<h:outputText value="#{commande.etatcommande}" />
+					</p:column>					
+					
+					<p:column headerText="Supprimer">
+						<h:commandButton actionListener="#{commandeMBean.deleteCommande}"
+							value="Suppr" />
+					</p:column>
+					<p:column headerText="Editer">
+						<h:commandButton action="#{commandeMBean.editCommande}"
+							value="Edit" />
+					</p:column>
+				</p:dataTable>
+			</h:form>
+		</p:layoutUnit>
+	</p:layout>
+
+
+</h:body>
+
+</html>

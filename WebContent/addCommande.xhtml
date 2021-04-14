@@ -1,0 +1,54 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+	<link rel="stylesheet" type="text/css" href="style/style.css"></link>
+</h:head>
+<h:body>
+
+	<p:layout fullPage="true">
+	
+		<ui:include src="layoutUnitMenu.xhtml" />
+
+		<p:layoutUnit position="center" id="layoutUnit-center">
+			<h1>Ajouter une commande</h1>
+			<h:form>
+				<p:panel>
+				<p:growl></p:growl>
+
+				<h:panelGrid columns="2">
+
+					<h:outputText value="Client" />
+					<p:selectOneMenu value="#{commandeMBean.commande.client.idclient}">
+						<f:selectItems value="#{clientMBean.listClients}" var="client" itemLabel="#{client.nomclient}" itemValue="#{client.idclient}" ></f:selectItems>
+					</p:selectOneMenu>
+					
+					<h:outputText value="Produit" />
+					<p:selectOneMenu value="#{commandeMBean.commande.produit.idproduit}">
+						<f:selectItems value="#{produitMBean.listProduits}" var="produit" itemLabel="#{produit.modelproduit}" itemValue="#{produit.idproduit}" ></f:selectItems>
+					</p:selectOneMenu>
+					
+					<h:outputText value="Date commande" />
+					<p:calendar value="#{commandeMBean.commande.datecommande}"></p:calendar>
+					
+					<h:outputText value="Etat commande" />
+					<p:inputText value="#{commandeMBean.commande.etatcommande}"></p:inputText>
+
+					<h:outputText value="Quantité commande" />
+					<p:inputText value="#{commandeMBean.commande.qtecommande}"></p:inputText>	
+					
+					<h:commandButton actionListener="#{commandeMBean.addCommande}"
+						value="Ajouter"></h:commandButton>
+
+				</h:panelGrid>
+
+			</p:panel>
+			</h:form>
+		</p:layoutUnit>
+	</p:layout>
+</h:body>
+</html>

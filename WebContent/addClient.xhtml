@@ -1,0 +1,85 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+	<link rel="stylesheet" type="text/css" href="style/style.css"></link>
+</h:head>
+<h:body>
+
+	<p:layout fullPage="true">
+	
+		<ui:include src="layoutUnitMenu.xhtml" />
+
+		<p:layoutUnit position="center" id="layoutUnit-center">
+			<h1>Ajouter un client</h1>
+			<h:form>
+				<p:panel>
+				<p:growl></p:growl>
+
+				<h:panelGrid columns="2">
+
+					<h:outputText value="Id Client" />
+					<p:inputText value="#{clientMBean.client.idclient}" required="true"></p:inputText>
+					
+					<h:outputText value="Civilité" />
+					<p:inputText value="#{clientMBean.client.civiliteclient}"></p:inputText>
+					
+					<h:outputText value="Nom" />
+					<p:inputText value="#{clientMBean.client.nomclient}"></p:inputText>
+
+					<h:outputText value="Prenom" />
+					<p:inputText value="#{clientMBean.client.prenomclient}"></p:inputText>
+
+					<h:outputText value="login" />
+					<p:inputText value="#{clientMBean.client.loginclient}"></p:inputText>
+					
+					<h:outputText value="Mots de passe Client" />
+					<p:inputText value="#{clientMBean.client.motpasseclient}"></p:inputText>
+					
+					<h:outputText value="Date de naissance" />
+					<p:inputText value="#{clientMBean.client.datenaissanceclient}"></p:inputText>
+					
+					<h:outputText value="Numero de rue" />
+            		<p:inputText value="#{clientMBean.client.numeroadrclient}"></p:inputText>
+					
+					<h:outputText value="Nom de rue" />
+            		<p:inputText value="#{clientMBean.client.rueadrclient}"></p:inputText>
+            		
+            		<h:outputText value="Commune" />
+            		<p:inputText value="#{clientMBean.client.communeadrclient}"></p:inputText>
+            		
+            		<h:outputText value="Ville" />
+            		<p:inputText value="#{clientMBean.client.villeadrclient}"></p:inputText>
+            		
+            		<h:outputText value="Code Postal" />
+            		<p:inputText value="#{clientMBean.client.cpadrclient}"></p:inputText>
+            		
+            		<h:outputText value="Numeros telephone" />
+            		<p:inputText value="#{clientMBean.client.telclient}"></p:inputText>
+            		
+            		<h:outputText value="Numero de fax" />
+            		<p:inputText value="#{clientMBean.client.faxclient}"></p:inputText>
+					
+					<h:outputText value="Numero de gsm" />
+            		<p:inputText value="#{clientMBean.client.gsmclient}"></p:inputText>
+					
+					<h:outputText value="Email" />
+            		<p:inputText id="idemail" value="#{clientMBean.client.emailclient}">
+            		<f:validator validatorId="emailValidator" for="idemail"></f:validator>
+            		</p:inputText>
+            		
+					<h:commandButton actionListener="#{clientMBean.addClient}"
+						value="Ajouter"></h:commandButton>
+
+				</h:panelGrid>
+
+			</p:panel>
+			</h:form>
+		</p:layoutUnit>
+	</p:layout>
+</h:body>
+</html>
